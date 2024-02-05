@@ -99,7 +99,7 @@ const Dynamic = () => {
 
 
                       <div class="product-container">
-    <img src={item.image} alt="Product Image" class="product-image"/>
+    <img src={item.image} alt="Product pic" class="product-image" />
     <div class="product-details">
       <h1 class="product-title">Product Name : {item.model}</h1>
 
