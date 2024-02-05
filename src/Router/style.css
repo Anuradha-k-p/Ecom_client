@@ -1,0 +1,129 @@
+/* .nav-list{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.NavLink{
+text-decoration: none;
+color: black;
+}
+
+li{
+   list-style-type: none;
+}
+
+
+
+
+.active .mobile-nav-icon{
+    display: none;
+    font-size: 4.2rem;
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    z-index: 9999;
+
+}
+.mobile-navbar-btn{
+    display: none;
+    background-color: transparent;
+    cursor:pointer;
+    border: none;
+}
+
+.active .close-outline{
+    display: inline-block;
+}
+
+
+@media only screen and (max-width:768px) {
+    .mobile-navbar-btn{
+        display: block;
+    
+    }
+    .mobile-nav-icon{
+        display: block;
+    }
+    
+    /* .close-outline{
+        display: block;
+    }
+ } */
+    
+ .hamburger-menu {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center;
+    gap: 25px; */
+  }
+  
+  .hamburger-icon {
+    display: none; /* Hide the icon by default for desktop */
+    /* flex-direction: row;
+    justify-content: center;
+    gap: 25px; */
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+    /* padding: 10px; */
+    width: 100%;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 0;
+  }
+  
+  .menu a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  @media (max-width: 767px) {
+    .hamburger-icon {
+      display: block; /* Display the icon for mobile */
+      cursor: pointer;
+    }
+  
+    .line {
+      width: 25px;
+      height: 3px;
+      background-color: #000;
+      margin: 5px 0;
+      transition: transform 0.3s;
+    }
+  
+    .line.open {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+  
+    .line2.open {
+      opacity: 0;
+    }
+  
+    .line3.open {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  
+    .menu {
+      display: none; /* Hide the menu by default for mobile */
+    }
+  
+    .menu.open {
+      display: flex; /* Display the menu when the hamburger icon is clicked */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    
+      width: 100%;
+      
+    }
+  }
+  
