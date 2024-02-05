@@ -14,7 +14,7 @@ const Women
         <video controls autoPlay muted src='https://media.istockphoto.com/id/1316773371/video/shopping-clothing-store-interior-modern-fashionable-shop-clothes-for-every-taste-stylish.mp4?s=mp4-640x640-is&k=20&c=1XHLA4eNvH0OpngnL0tqQpNDGtQOWFxIl5adl8JipOE='className='first'/>
 
        </div>
-       <h1>SHOP FOR YOUR LOVE </h1>
+       <h1 className='hm-hd'>SHOP FOR YOUR LOVE </h1>
 <div className='letest'>
 
 {/* {received.filter((item) =>  item.id >= 130 && item.id <= 133 && item.category === "home"  ) */}

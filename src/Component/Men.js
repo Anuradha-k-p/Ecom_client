@@ -11,7 +11,7 @@ const Men = () => {
         <div className='new'>
         <video controls autoPlay muted src='https://media.istockphoto.com/id/1328244639/video/happy-sweet-boy-shopping-with-his-dad-at-the-mall-each-carrying-bags-while-talking-cheerfully.mp4?s=mp4-640x640-is&k=20&c=WSpZYZg8QZuxzBSsUtYJYz9FiQ3RLLc0ELn3eQEQwjs='className='first'/>
           </div>
-          <h1>ADD TO YOUR WISHLIST</h1>
+          <h1 className='hm-hd'>ADD TO YOUR WISHLIST</h1>
         <div className='letest'>
 
 {/* {received.filter((item) =>  item.id >= 130 && item.id <= 133 && item.category === "home"  ) */}

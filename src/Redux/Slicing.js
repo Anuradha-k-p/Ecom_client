@@ -16,7 +16,7 @@ const AddtoCart = createSlice({
       const token=localStorage.getItem("token")
       if(token){
        console.log(action.payload)
- axios.post("http://localhost:4001/api/addcart",action.payload).then((res)=>{
+ axios.post("https://e-back-5zf8.onrender.com/api/addcart",action.payload).then((res)=>{
 console.log(res.data)
 })
       const existingItem = state.cart.find(
