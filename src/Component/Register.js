@@ -57,7 +57,9 @@ const Register = () => {
     e.preventDefault()
     // https://nodehanson4.onrender.com/registerpage
     axios
-      .post('http://localhost:5050/api/register',rdata)
+      // .post('https://e-back-5zf8.onrender.com/api/register',rdata)
+      .post('https://e-back-5zf8.onrender.com/api/register',rdata)
+
       .then((res) => {
         
         // setStore(res.data.msg);
@@ -170,6 +172,11 @@ const Register = () => {
 
 }
 export default Register
+
+
+
+
+
 
 
 
