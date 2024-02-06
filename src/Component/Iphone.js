@@ -66,13 +66,25 @@ const Iphone = () => {
                   alt="not found"
                
                 />
-                <div id="Description2">
-                <NavLink to={`/dynamic/${item.id}`}>
-                <h2>{item.model}</h2>
-                </NavLink>
-                  {/* <p>{item.Description.slice(0,110)+"..."}</p> */}
+
+
+<div id="Description2">
+                  <h3>{item.model}</h3>
+                  <h3 style={{color:"green"}}>{item.price} RS</h3>
                 </div>
-                {/* </NavLink> */}
+
+
+                <NavLink to={`/dynamic/${item.id}`}>
+                  <div className="hidden-paragraph">
+                     <button className='add-but'>SHOW PRODUCT</button>
+                     <p><FaShareFromSquare className="share"/></p>
+                  </div>
+                </NavLink>
+                
+
+
+
+
               </div>
             );
           })}
