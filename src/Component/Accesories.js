@@ -15,7 +15,7 @@ const Accesories = () => {
         
    </div>  
 
-   <h1>MUST-HAVE ELECTRONICS AND APPLIANCES</h1>
+   <h1 className='gr-hd'>MUST-HAVE ELECTRONICS AND APPLIANCES</h1>
 <div className='letest'>
 
 {/* {received.filter((item) =>  item.id >= 130 && item.id <= 133 && item.category === "home"  ) */}
