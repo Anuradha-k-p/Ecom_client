@@ -51,7 +51,9 @@ const Login = () => {
   const datasubmit=(e)=>{
     e.preventDefault()
     axios
-      .post('http://localhost:5050/api/login',ldata)
+      // .post('https://e-back-5zf8.onrender.com/api/login',ldata)
+      .post('https://e-back-5zf8.onrender.com/api/login',ldata)
+
       .then((res) => {
         
         
@@ -128,6 +130,8 @@ const Login = () => {
 }
 
 export default Login
+
+
 
 
 
