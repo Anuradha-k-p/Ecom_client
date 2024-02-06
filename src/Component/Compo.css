@@ -76,6 +76,7 @@ h1:hover{
 
   footer{
     width: 100%;
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

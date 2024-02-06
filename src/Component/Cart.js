@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RemoveItem, IncreaseQuantity, DecreaseQuantity } from "../Redux/Slicing";
 import "./Cart.css"
-import { loadStripe } from "@stripe/stripe-js";
+//import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -11,16 +11,21 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Cart = () => {
+  
+  
 
   const navigate =useNavigate()
 
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token")
 
-  const data = useSelector((state) => state.Cart.cart);
+  const Products = useSelector((state) => state.Cart.cart);
 
-  const total = data.reduce((cur, item) => {
+  const total = Products.reduce((cur, item) => {
     return (cur) + item.price * (item.quantity);
   }, 0);
+
+
 
 
   const handleIncreaseQuantity = (id) => {
@@ -29,43 +34,57 @@ const Cart = () => {
   const handleDecreaseQuantity = (id) => {
     dispatch(DecreaseQuantity({ id }));
   };
-  const token = localStorage.getItem("token")
 
 
-  const handlePayment = async () => {
-    try {
-      console.log("Handling payment...");
-      const stripe = await loadStripe("pk_test_51OgWF8SF5J9zEbVfCVy0lacN08v0pehFTUGnqBCxediYj9BLu8ZgYtUOb6zaAq3i87pZKEjFB62TAKOlHO3eUakc00rT8IgizL");
-      const body = {
-        products: Cart
-      };
+  // const token = localStorage.getItem("token")
+
   
-      const headers = {
-        "Content-Type": "application/json",
-      };
-  
-      const response = await fetch("http://localhost:5050/api/payment", {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(body)
-      });
-  
-      const session = await response.json();
-      const result =  stripe.redirectToCheckout({ sessionId: session.id });
-  
-      if (result.error) {
-        console.log("Payment failed:", result.error);
-        alert('Payment failed. Please try again.');
-      } else {
-        // Payment was successful, clear the cart
-        // dispatch(clearCart());
-        navigate('/');
-      }
-    } catch (error) {
-      console.error("Error during checkout:", error);
-      alert('An error occurred during checkout. Please try again.');
-    }
-  };
+
+
+  const clearCart = localStorage.setItem("Products",Products)
+
+
+
+  const resetCart = () =>{
+navigate("/")
+localStorage.clear(clearCart)
+
+  } 
+
+
+
+//   const makePayment=async ()=>{
+//       const stripe = await loadStripe("pk_test_51OgWF8SF5J9zEbVfCVy0lacN08v0pehFTUGnqBCxediYj9BLu8ZgYtUOb6zaAq3i87pZKEjFB62TAKOlHO3eUakc00rT8IgizL");
+//   const body={
+//       products:Products
+//     }
+//     const headers={
+//       "content-Type":"application/json"
+//     }
+//     const response=await fetch("http://localhost:5050/api/payment",
+//     {method:"POST",
+//   headers:headers,
+// body:JSON.stringify(body),
+
+// }
+//     );
+//     const session=await response.json();
+//     console.log(session)
+//     const result=stripe.redirectToCheckout({
+//       sessionId:session.id
+//     });  
+//     localStorage.removeItem("value")
+//     // navigate("/Success")
+    
+//     if(result.error){
+//       console.log( result.error);
+//     }
+    
+ // }
+
+
+ 
+
 
   return (
     token?<div>
@@ -79,8 +98,8 @@ const Cart = () => {
         </div>
 
         <div>
-          {data &&
-            data.map((item, index) => {
+          {Products &&
+            Products.map((item, index) => {
 
               return (
                 <div className="content-cart" key={index}>
@@ -126,12 +145,14 @@ const Cart = () => {
         <div className="buy">
           {/* <NavLink to="/success" state={data}> */}
           {/* <button onClick={makePayment}>Buy Now</button> */}
-          <button onClick={handlePayment}>Buy Now</button>
+          <button onClick={resetCart} >Buy Now</button>
 
           {/* </NavLink> */}
         </div>
       </div>
-    </div>:<h1>cart is empty</h1>
+    </div>:<h1>CART IS EMPTY
+
+    </h1>
   );
 };
 

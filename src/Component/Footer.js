@@ -1,6 +1,6 @@
 import React from 'react';
 //import Contact from './../Contact';
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
 import "./Compo.css"
 import { SiGmail } from "react-icons/si";
 import { FaTwitter } from "react-icons/fa";
@@ -11,8 +11,8 @@ import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
     return(
         <>
-        <div className='contact-short'>
-            <div className='grid grid-two-column'>
+        {/* <div className='contact-short'> */}
+            {/* <div className='grid grid-two-column'>
                 <div>
                     <h3>Ready to start?</h3>
                     <h3> Talk To us Today</h3>
@@ -24,10 +24,10 @@ const Footer = () => {
                     </button>
                
 
-            </div>
+            </div> */}
 
 
-        </div>
+      {/* //  </div> */}
         <footer>
             <div className='footer-about'>
                 <h3>CHOICE</h3>

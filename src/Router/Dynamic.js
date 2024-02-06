@@ -11,6 +11,16 @@ const Dynamic = () => {
 
   const Dispatch = useDispatch();
 
+  const token = localStorage.getItem("token");
+
+  const handleAddToCart = (item) => {
+    if (token) {
+      Dispatch(addtoCart(item));
+    } else {
+      alert("Please login first.");
+    }
+  };
+
 
   
   return(
@@ -138,7 +148,8 @@ const Dynamic = () => {
       <p class="product-price">Price : {item.price}Rs.</p>
       <NavLink to='/cart'>   
          {/* <button class="add-to-cart-btn" onClick={()=>Dispatch(AddCart(item))}>Add to Cart</button> */}
-         <button class="add-to-cart-btn" onClick={()=>Dispatch(addtoCart(item))}>Add to Cart</button>
+         {/* <button class="add-to-cart-btn" onClick={()=>Dispatch(addtoCart(item))}>Add to Cart</button> */}
+         <button class="add-to-cart-btn" onClick={() => handleAddToCart(item)}>Add to Cart</button>
 
 </NavLink>
     </div>
