@@ -2,18 +2,24 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RemoveItem, IncreaseQuantity, DecreaseQuantity } from "../Redux/Slicing";
 import "./Cart.css"
+import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 
 
 const Cart = () => {
-  
+
+  const navigate =useNavigate()
+
   const dispatch = useDispatch();
-  
+
   const data = useSelector((state) => state.Cart.cart);
 
   const total = data.reduce((cur, item) => {
-    return (cur) +item.price *(item.quantity);
+    return (cur) + item.price * (item.quantity);
   }, 0);
 
 
@@ -23,9 +29,46 @@ const Cart = () => {
   const handleDecreaseQuantity = (id) => {
     dispatch(DecreaseQuantity({ id }));
   };
+  const token = localStorage.getItem("token")
+
+
+  const handlePayment = async () => {
+    try {
+      console.log("Handling payment...");
+      const stripe = await loadStripe("pk_test_51OgWF8SF5J9zEbVfCVy0lacN08v0pehFTUGnqBCxediYj9BLu8ZgYtUOb6zaAq3i87pZKEjFB62TAKOlHO3eUakc00rT8IgizL");
+      const body = {
+        products: Cart
+      };
+  
+      const headers = {
+        "Content-Type": "application/json",
+      };
+  
+      const response = await fetch("http://localhost:5050/api/payment", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body)
+      });
+  
+      const session = await response.json();
+      const result =  stripe.redirectToCheckout({ sessionId: session.id });
+  
+      if (result.error) {
+        console.log("Payment failed:", result.error);
+        alert('Payment failed. Please try again.');
+      } else {
+        // Payment was successful, clear the cart
+        // dispatch(clearCart());
+        navigate('/');
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      alert('An error occurred during checkout. Please try again.');
+    }
+  };
 
   return (
-    <div>
+    token?<div>
       <h2 className="headcart">Cart</h2>
 
       <div className="cart-content">
@@ -52,8 +95,8 @@ const Cart = () => {
                     </button>
                   </div>
                   <h2 className="cartprice">
-                 
-                    {"₹ " + item.price *item.quantity}
+
+                    {"₹ " + item.price * item.quantity}
                   </h2>
                   <div>
                     <button
@@ -77,18 +120,18 @@ const Cart = () => {
 
         <div className="total">
           <h2>Total : </h2>
-          <h1 style={{ color: "black", fontSize:"28px" }}>{total}</h1>
+          <h1 style={{ color: "black", fontSize: "28px" }}>{total}</h1>
         </div>
 
         <div className="buy">
-        {/* <NavLink to="/success" state={data}> */}
+          {/* <NavLink to="/success" state={data}> */}
           {/* <button onClick={makePayment}>Buy Now</button> */}
-          <button>Buy Now</button>
+          <button onClick={handlePayment}>Buy Now</button>
 
           {/* </NavLink> */}
         </div>
       </div>
-    </div>
+    </div>:<h1>cart is empty</h1>
   );
 };
 

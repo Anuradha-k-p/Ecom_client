@@ -70,34 +70,3 @@ export const { addtoCart, RemoveItem, IncreaseQuantity, DecreaseQuantity } =
 
 
 
-
-
-// const initialState = {
-//   Cart:[],
-//   Quantity:0
-// }
-
-// const CartSlice = createSlice({
-//   name: "Cart",
-//   initialState,
-//   reducers:{
-//       AddCart:(state,action)=>{
-//         const find = state.Cart.findIndex(item=>item.id===action.payload.id)
-//         if(find>=0){
-
-//           state.Cart[find].Quantity+=1
-//         }
-
-//         else{
-
-        
-//         const tempvar = {...action.payload,Quantity:1}
-//         state.Cart.push(tempvar)
-//         }
-//       }
-//   }
-// })
-
-
-// export const {AddCart} =CartSlice.actions;
-// export default CartSlice.reducer;
